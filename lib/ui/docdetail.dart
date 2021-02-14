@@ -95,13 +95,13 @@ class DocDetailState extends State<DocDetail> {
     widget.doc.fqMonth = boolToInt(fqMonthCtrl);
 
     if (widget.doc.id > -1) {
-      debugPrint("_update->Doc Id: " + widget.doc.id.toString());
+      debugPrint("_update->Doc Id: ${widget.doc.id.toString()}");
       widget.dbh.updateDoc(widget.doc);
       Navigator.pop(context, true);
     } else {
       Future<int> idd = widget.dbh.getMaxId();
       idd.then((result) {
-        debugPrint("_insert->Doc Id: " + widget.doc.id.toString());
+        debugPrint("_insert->Doc Id: ${widget.doc.id.toString()}");
         widget.doc.id = (result != null) ? result + 1 : 1;
         widget.dbh.insertDoc(widget.doc);
         Navigator.pop(context, true);
@@ -185,9 +185,8 @@ class DocDetailState extends State<DocDetail> {
                       maxLength: 10,
                       decoration: InputDecoration(
                           icon: const Icon(Icons.calendar_today),
-                          hintText: 'Expiry date (i.e. ' +
-                              daysAheadAsStr(daysAhead) +
-                              ')',
+                          hintText:
+                              'Expiry date (i.e. ${daysAheadAsStr(daysAhead)})',
                           labelText: 'Expiry Date'),
                       keyboardType: TextInputType.number,
                       validator: (val) =>
