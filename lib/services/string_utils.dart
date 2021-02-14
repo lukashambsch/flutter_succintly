@@ -1,11 +1,11 @@
-import 'package:intl/intl.dart';
+import 'date_utils.dart';
 
 String validateTitle(String val) {
   return (val != null && val != "") ? null : "Title cannot be empty";
 }
 
 String getExpiryStr(String expires) {
-  var e = DateUtils.convertToDate(expires);
+  var e = convertToDate(expires);
   var td = new DateTime.now();
   Duration dif = e.difference(td);
   int dd = dif.inDays + 1;
