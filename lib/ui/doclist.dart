@@ -148,7 +148,7 @@ class DocListState extends State<DocList> {
             title: Text(this.docs[position].title),
             subtitle: Text("${getExpiryStr(this.docs[position].expiration)} "
                 "${dl}"
-                "\nExp: ${convertToDateFull(this.docs[position].expiration))}"),
+                "\nExp: ${convertToDateFull(this.docs[position].expiration)}"),
             onTap: () {
               navigateToDetail(this.docs[position]);
             },
