@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../model/model.dart';
-import '../services/date_utils.dart';
-import '../services/string_utils.dart';
-import '../util/dbhelper.dart';
-import './docdetail.dart';
+import 'model/model.dart';
+import 'services/date_utils.dart';
+import 'services/string_utils.dart';
+import 'util/dbhelper.dart';
+import 'ui/docdetail.dart';
 
 // Menu item
 const menuReset = "Reset Local Data";
