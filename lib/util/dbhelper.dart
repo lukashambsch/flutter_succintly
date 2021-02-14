@@ -5,7 +5,7 @@ import 'package:path_provider/path_provider.dart';
 import 'dart:async';
 import 'dart:io';
 
-import 'model/model.dart';
+import '../model/model.dart';
 
 class DbHelper {
   // Tables
