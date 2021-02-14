@@ -13,11 +13,11 @@ String getExpiryStr(String expires) {
 }
 
 bool strToBool(String str) {
-  return (int.parse(str) > 0) ? true : false;
+  return int.parse(str) > 0;
 }
 
 bool intToBool(int val) {
-  return (val > 0) ? true : false;
+  return val ?? 0 > 0;
 }
 
 String boolToStr(bool val) {
