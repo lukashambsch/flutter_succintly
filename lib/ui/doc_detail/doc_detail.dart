@@ -6,13 +6,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
-import '../model/model.dart';
-import '../services/date_utils.dart';
-import '../services/string_utils.dart';
-import '../util/dbhelper.dart';
-
-const menuDelete = 'Delete';
-final List<String> menuOptions = const <String>[menuDelete];
+import '../../model/model.dart';
+import '../../services/date_utils.dart';
+import '../../services/string_utils.dart';
+import '../../util/dbhelper.dart';
+import './doc_detail_app_bar.dart';
 
 class DocDetail extends StatefulWidget {
   Doc doc;
@@ -70,22 +68,6 @@ class DocDetailState extends State<DocDetail> {
     }, currentTime: initialDate);
   }
 
-  void _selectMenu(String value) async {
-    switch (value) {
-      case menuDelete:
-        if (widget.doc.id == -1) {
-          return;
-        }
-        await _deleteDoc(widget.doc.id);
-    }
-  }
-
-  // Delete doc
-  void _deleteDoc(int id) async {
-    int r = await widget.dbh.deleteDoc(widget.doc.id);
-    Navigator.pop(context, true);
-  }
-
   void _saveDoc() {
     widget.doc.title = titleCtrl.text;
     widget.doc.expiration = expirationCtrl.text;
@@ -134,28 +116,11 @@ class DocDetailState extends State<DocDetail> {
   Widget build(BuildContext context) {
     const String cStrDays = "Enter a number of days";
     TextStyle tStyle = Theme.of(context).textTheme.title;
-    String ttl = widget.doc.title;
 
     return Scaffold(
         key: _scaffoldKey,
         resizeToAvoidBottomPadding: false,
-        appBar: AppBar(
-            title: Text(ttl != "" ? widget.doc.title : "New Document"),
-            actions: (ttl == "")
-                ? <Widget>[]
-                : <Widget>[
-                    PopupMenuButton(
-                      onSelected: _selectMenu,
-                      itemBuilder: (BuildContext context) {
-                        return menuOptions.map((String choice) {
-                          return PopupMenuItem<String>(
-                            value: choice,
-                            child: Text(choice),
-                          );
-                        }).toList();
-                      },
-                    ),
-                  ]),
+        appBar: DocDetailAppBar(widget.doc),
         body: Form(
             key: _formKey,
             autovalidate: true,

@@ -6,7 +6,7 @@ import '../model/model.dart';
 import '../services/date_utils.dart';
 import '../services/string_utils.dart';
 import '../util/dbhelper.dart';
-import './docdetail.dart';
+import './doc_detail/doc_detail.dart';
 
 // Menu item
 const menuReset = "Reset Local Data";

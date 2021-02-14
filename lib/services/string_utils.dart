@@ -17,7 +17,7 @@ bool strToBool(String str) {
 }
 
 bool intToBool(int val) {
-  return val ?? 0 > 0;
+  return (val ?? 0) > 0;
 }
 
 String boolToStr(bool val) {
